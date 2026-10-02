@@ -33,9 +33,33 @@ LINES = [
     (33.2, 'الكوموندات الكل في داشبورد وحدة.'),
     (38.9, 'للريستو، يبعث لينك الحجز، والكليان يختار طاولتو وحدو.'),
     (45.4, 'وكل ريزرفاسيون توصلك في الحين.'),
-    (52.3, 'للإيكومرس، يبدا من خمسين دينار في الشهر. وللريستو، يبدا من ستين دينار.'),
-    (56.4, 'مرشاتي. جرّب سبعة أيام بلاش.'),
+    (51.2, 'للإيكومرس، يبدا من خمسين دينار في الشهر. وللريستو، يبدا من ستين دينار.'),
+    (56.8, 'مرشاتي. جرّب سبعة أيام بلاش.'),
 ]
+
+
+def trim(clip, pad=0.04):
+    """Drops the TTS engine's leading/trailing silence."""
+    idx = np.where(np.abs(clip) > 0.01)[0]
+    if not len(idx):
+        return clip
+    p = int(pad * SR)
+    return clip[max(0, idx[0] - p) : idx[-1] + p]
+
+
+def fit(clip, room):
+    """Speeds a line up (pitch-preserving) just enough to end before the next one."""
+    tempo = len(clip) / SR / room
+    if tempo <= 1:
+        return clip
+    if tempo > 1.15:
+        print(f'warning: speeding a line up x{tempo:.2f}')
+    pcm = subprocess.run(
+        ['ffmpeg', '-loglevel', 'error', '-f', 'f32le', '-ac', '1', '-ar', str(SR), '-i', 'pipe:0',
+         '-af', f'atempo={tempo:.4f}', '-f', 'f32le', 'pipe:1'],
+        input=clip.astype(np.float32).tobytes(), capture_output=True, check=True,
+    ).stdout
+    return np.frombuffer(pcm, np.float32)
 
 
 async def synth(text):
@@ -53,11 +77,9 @@ async def synth(text):
 async def main(out):
     track = np.zeros(int(SR * DUR), np.float32)
     for i, (t0, text) in enumerate(LINES):
-        clip = await synth(text)
         nxt = LINES[i + 1][0] if i + 1 < len(LINES) else DUR
         room = nxt - t0 - 0.15
-        if len(clip) / SR > room:
-            print(f'warning: line {i} is {len(clip) / SR:.2f}s, room {room:.2f}s')
+        clip = fit(trim(await synth(text)), room)
         a = int(t0 * SR)
         clip = clip[: len(track) - a]
         track[a : a + len(clip)] += clip
