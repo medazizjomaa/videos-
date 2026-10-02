@@ -106,7 +106,7 @@ type Props = {
 /** A clean Instagram / Messenger thread that auto-scrolls as items arrive. */
 export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, composer, children}) => {
   const f = useCurrentFrame();
-  const accent = theme === 'messenger' ? '#5B7CFF' : '#FFFFFF';
+  const accent = theme === 'messenger' ? '#0A7CFF' : '#0F1222';
 
   // Appearance progress per item (typing indicators collapse back out).
   const prog = items.map((it) => {
@@ -148,7 +148,7 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
         inset: 0,
         background: theme === 'instagram' ? COLORS.igBg : COLORS.msBg,
         fontFamily: UI_STACK,
-        color: '#fff',
+        color: '#0F1222',
       }}
     >
       {/* Messages */}
@@ -205,7 +205,7 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
           width: SCREEN_W,
           height: HEADER_BOTTOM,
           background: theme === 'instagram' ? COLORS.igBg : COLORS.msBg,
-          borderBottom: `0.5px solid ${alpha('#FFFFFF', 0.1)}`,
+          borderBottom: `0.5px solid ${alpha('#000000', 0.1)}`,
           display: 'flex',
           alignItems: 'flex-end',
           padding: '0 16px 12px 8px',
@@ -217,7 +217,7 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
         <Avatar size={36} initials={avatar.initials} bg={avatar.bg} dot={theme === 'messenger'} />
         <div style={{flex: 1, marginLeft: 4}}>
           <div style={{fontWeight: 700, fontSize: 16, letterSpacing: '-0.01em'}}>{name}</div>
-          <div style={{fontSize: 12.5, color: alpha('#FFFFFF', 0.55), marginTop: 1}}>{sub}</div>
+          <div style={{fontSize: 12.5, color: alpha('#000000', 0.5), marginTop: 1}}>{sub}</div>
         </div>
         <div style={{display: 'flex', gap: 22, paddingBottom: 6}}>
           <IconPhone size={24} color={accent} stroke={1.9} />
@@ -246,7 +246,7 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
               flex: 1,
               height: 46,
               borderRadius: 23,
-              background: '#1F1F1F',
+              background: '#F2F2F2',
               display: 'flex',
               alignItems: 'center',
               padding: '0 8px 0 6px',
@@ -266,10 +266,10 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
             >
               <IconCamera size={19} color="#fff" stroke={2} />
             </div>
-            <div style={{flex: 1, color: alpha('#FFFFFF', 0.45), fontSize: 16}}>{composer}</div>
-            <IconMic size={22} color="#fff" stroke={1.8} />
-            <IconImage size={22} color="#fff" stroke={1.8} />
-            <IconSmile size={22} color="#fff" stroke={1.8} style={{marginRight: 6}} />
+            <div style={{flex: 1, color: alpha('#000000', 0.4), fontSize: 16}}>{composer}</div>
+            <IconMic size={22} color="#0F1222" stroke={1.8} />
+            <IconImage size={22} color="#0F1222" stroke={1.8} />
+            <IconSmile size={22} color="#0F1222" stroke={1.8} style={{marginRight: 6}} />
           </div>
         ) : (
           <>
@@ -284,11 +284,11 @@ export const DMThread: React.FC<Props> = ({theme, name, sub, avatar, items, comp
                 flex: 1,
                 height: 40,
                 borderRadius: 20,
-                background: '#262626',
+                background: '#F0F0F0',
                 display: 'flex',
                 alignItems: 'center',
                 padding: '0 12px',
-                color: alpha('#FFFFFF', 0.45),
+                color: alpha('#000000', 0.4),
                 fontSize: 16,
               }}
             >

@@ -34,7 +34,7 @@ export const TypingIndicator: React.FC<{theme: ThreadTheme; scale?: number; colo
               width: 7.5 * scale,
               height: 7.5 * scale,
               borderRadius: 8,
-              background: '#fff',
+              background: '#8E8E93',
               opacity: 0.45 + 0.4 * Math.max(0, ph),
               transform: `translateY(${-Math.max(0, ph) * 3 * scale}px)`,
             }}

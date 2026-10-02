@@ -49,9 +49,9 @@ const Panel: React.FC<{type: NotifApp; seed: number; h: number; start: number}> 
         border: `1px solid ${COLORS.lineStrong}`,
         overflow: 'hidden',
         fontFamily: UI_STACK,
-        color: '#fff',
+        color: '#0F1222',
         position: 'relative',
-        boxShadow: `0 20px 60px ${alpha('#000000', 0.4)}`,
+        boxShadow: `0 16px 40px ${alpha('#0B1B3F', 0.1)}`,
       }}
     >
       <div
@@ -73,6 +73,7 @@ const Panel: React.FC<{type: NotifApp; seed: number; h: number; start: number}> 
           style={{
             fontWeight: 700,
             fontSize: 13,
+            color: '#fff',
             background: COLORS.red,
             borderRadius: 12,
             padding: '4px 10px',
@@ -119,9 +120,9 @@ const Panel: React.FC<{type: NotifApp; seed: number; h: number; start: number}> 
               </div>
             </div>
             {typing && (type === 'ig' || type === 'ms') ? (
-              <div style={{display: 'flex', gap: 4, background: alpha('#FFFFFF', 0.1), borderRadius: 12, padding: '8px 10px'}}>
+              <div style={{display: 'flex', gap: 4, background: '#EEF1F6', borderRadius: 12, padding: '8px 10px'}}>
                 {dots.map((o, d) => (
-                  <div key={d} style={{width: 6, height: 6, borderRadius: 6, background: '#fff', opacity: o}} />
+                  <div key={d} style={{width: 6, height: 6, borderRadius: 6, background: '#5B6782', opacity: o}} />
                 ))}
               </div>
             ) : (

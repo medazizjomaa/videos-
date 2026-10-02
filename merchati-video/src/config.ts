@@ -31,19 +31,19 @@ export const COLORS = {
   blueSoft: '#3BA0FF',
 
   // Video backgrounds
-  bg: '#04070F',
-  bgDeep: '#020409',
-  bgPanel: '#0B1020',
-  bgPanel2: '#111830',
-  line: 'rgba(255,255,255,0.08)',
-  lineStrong: 'rgba(255,255,255,0.14)',
-  text: '#FFFFFF',
-  textDim: 'rgba(235,240,255,0.62)',
-  textFaint: 'rgba(235,240,255,0.38)',
+  bg: '#F4F7FC',
+  bgDeep: '#E9EEF7',
+  bgPanel: '#FFFFFF',
+  bgPanel2: '#F7F9FD',
+  line: 'rgba(11,27,63,0.07)',
+  lineStrong: 'rgba(11,27,63,0.12)',
+  text: '#0B1B3F',
+  textDim: 'rgba(11,27,63,0.62)',
+  textFaint: 'rgba(11,27,63,0.4)',
 
   // Alerts / states
-  red: '#FF3B4E',
-  redSoft: '#FF6B78',
+  red: '#F0293E',
+  redSoft: '#E5384B',
   amber: '#FFB547',
   green: '#22C55E',
   greenSoft: '#4ADE80',
@@ -52,14 +52,14 @@ export const COLORS = {
   phoneBody: '#16181D',
   phoneEdge: '#2A2E37',
   island: '#000000',
-  lockWall1: '#0A1230',
-  lockWall2: '#050816',
-  notif: 'rgba(38,40,48,0.94)',
-  notifText: '#F4F5F8',
-  notifSub: 'rgba(235,235,245,0.62)',
+  lockWall1: '#CFE0FF',
+  lockWall2: '#F3F6FD',
+  notif: 'rgba(255,255,255,0.96)',
+  notifText: '#0F1222',
+  notifSub: 'rgba(60,60,67,0.6)',
 
-  igBg: '#000000',
-  igIn: '#262626',
+  igBg: '#FFFFFF',
+  igIn: '#EFEFEF',
   igOut1: '#8B3DFF',
   igOut2: '#3B6EFF',
   igIcon1: '#FEDA75',
@@ -67,17 +67,17 @@ export const COLORS = {
   igIcon3: '#D62976',
   igIcon4: '#962FBF',
 
-  msBg: '#000000',
-  msIn: '#303030',
+  msBg: '#FFFFFF',
+  msIn: '#F0F0F0',
   msOut1: '#1E7BFF',
   msOut2: '#7A4DFF',
   msIcon1: '#00B2FF',
   msIcon2: '#A033FF',
 
-  tgBg: '#0E1621',
-  tgHeader: '#17212B',
-  tgBubble: '#182533',
-  tgAccent: '#5EB5F7',
+  tgBg: '#DCE6EF',
+  tgHeader: '#FFFFFF',
+  tgBubble: '#FFFFFF',
+  tgAccent: '#3390EC',
   tgIcon: '#2AABEE',
 
   shopIcon1: '#097CF1',
@@ -128,7 +128,7 @@ export const alpha = (hex: string, a: number) => {
 };
 
 export const GRADIENTS = {
-  accentText: `linear-gradient(92deg, ${COLORS.blueSoft} 0%, ${COLORS.cyan} 100%)`,
+  accentText: `linear-gradient(92deg, ${COLORS.blue} 0%, #00A6D6 100%)`,
   brand: `linear-gradient(135deg, ${COLORS.blue} 0%, #2E9BFF 55%, ${COLORS.cyan} 130%)`,
   igOut: `linear-gradient(180deg, ${COLORS.igOut1} 0%, ${COLORS.igOut2} 100%)`,
   msOut: `linear-gradient(180deg, ${COLORS.msOut2} 0%, ${COLORS.msOut1} 100%)`,
@@ -302,3 +302,6 @@ export const BEATS = {
     url: 82,
   },
 } as const;
+
+// Set to true once public/audio/voiceover.wav exists (scripts/voiceover.py). Music is ducked under it.
+export const VOICEOVER = false;

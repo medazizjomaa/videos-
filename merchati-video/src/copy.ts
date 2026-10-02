@@ -242,8 +242,8 @@ export const COPY = {
   pricing: {
     headline: ['Soum m3a9oul,', '*bla surprises.*'],
     plans: [
-      {name: 'E-commerce', from: 'men', price: 50, unit: 'DT / ch’har', setup: 'Bla frais d’installation', features: ['Commandet fil DM', 'Sync Converty & Shopify', 'Alertes Telegram']},
-      {name: 'Restaurant & Café', from: '', price: 60, unit: 'DT / ch’har', setup: '+ 150 DT setup (marra wa7da)', features: ['Site de réservation', 'Plan de salle interactif', 'Menu w réservations fil DM']},
+      {name: 'E-commerce', from: 'Ybda men', price: 50, unit: 'DT / ch’har', setup: ''},
+      {name: 'Restaurant & Café', from: 'Ybda men', price: 60, unit: 'DT / ch’har', setup: '+ 150 DT setup (marra wa7da)'},
     ],
   },
   cta: {

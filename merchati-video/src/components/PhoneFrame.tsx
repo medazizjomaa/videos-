@@ -52,7 +52,7 @@ export const PhoneFrame: React.FC<Props> = ({
           boxShadow: [
             `inset 0 0 0 1.5px ${alpha('#FFFFFF', 0.16)}`,
             `0 0 0 1px ${alpha('#000000', 0.6)}`,
-            `0 40px 90px ${alpha('#000000', 0.55)}`,
+            `0 40px 90px ${alpha('#0B1B3F', 0.28)}`,
             `0 0 120px ${alpha(COLORS.blue, 0.18 * glow)}`,
           ].join(','),
           fontFamily: UI_STACK,

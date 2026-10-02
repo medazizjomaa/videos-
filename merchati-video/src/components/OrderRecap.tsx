@@ -13,12 +13,12 @@ const Row: React.FC<{l: string; r: string; strong?: boolean}> = ({l, r, strong})
       justifyContent: 'space-between',
       fontSize: strong ? 16 : 14,
       fontWeight: strong ? 700 : 500,
-      color: strong ? '#fff' : alpha('#FFFFFF', 0.7),
+      color: strong ? '#0F1222' : alpha('#000000', 0.62),
       lineHeight: '24px',
     }}
   >
     <span>{l}</span>
-    <span style={{color: strong ? '#fff' : alpha('#FFFFFF', 0.9)}}>{r}</span>
+    <span style={{color: '#0F1222'}}>{r}</span>
   </div>
 );
 
@@ -31,18 +31,19 @@ export const OrderRecap: React.FC<{width?: number}> = ({width = 268}) => {
         width,
         height: ORDER_RECAP_H,
         borderRadius: 20,
-        background: '#1C1C1E',
-        border: `1px solid ${alpha('#FFFFFF', 0.09)}`,
+        background: '#FFFFFF',
+        border: '1px solid #E4E6EB',
+        boxShadow: '0 6px 18px rgba(0,0,0,0.06)',
         padding: 14,
         boxSizing: 'border-box',
         fontFamily: UI_STACK,
-        color: '#fff',
+        color: '#0F1222',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       <div style={{position: 'absolute', left: 0, top: 0, right: 0, height: 3, background: GRADIENTS.brand}} />
-      <div style={{fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: alpha('#FFFFFF', 0.5)}}>
+      <div style={{fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: alpha('#000000', 0.45)}}>
         {c.title}
       </div>
       <div style={{display: 'flex', gap: 10, alignItems: 'center', marginTop: 10}}>
@@ -62,14 +63,14 @@ export const OrderRecap: React.FC<{width?: number}> = ({width = 268}) => {
         </div>
         <div>
           <div style={{fontSize: 15, fontWeight: 600}}>{c.product}</div>
-          <div style={{fontSize: 13, color: alpha('#FFFFFF', 0.6), marginTop: 1}}>{c.variant}</div>
+          <div style={{fontSize: 13, color: alpha('#000000', 0.55), marginTop: 1}}>{c.variant}</div>
         </div>
       </div>
-      <div style={{height: 1, background: alpha('#FFFFFF', 0.1), margin: '12px 0 6px'}} />
+      <div style={{height: 1, background: '#ECECEC', margin: '12px 0 6px'}} />
       <Row l={c.subtotal} r={c.subtotalValue} />
       <Row l={c.delivery} r={c.deliveryValue} />
       <Row l={c.total} r={c.totalValue} strong />
-      <div style={{fontSize: 12, color: alpha('#FFFFFF', 0.45), marginTop: 2}}>{c.payment}</div>
+      <div style={{fontSize: 12, color: alpha('#000000', 0.45), marginTop: 2}}>{c.payment}</div>
       <div style={{fontSize: 16.5, fontWeight: 700, marginTop: 9}}>{c.question}</div>
     </div>
   );

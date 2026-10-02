@@ -21,7 +21,7 @@ const TelegramChat: React.FC = () => {
   const p = sp(f, B.bubble, SPRINGS.snappy);
   const glow = Math.max(0, p - sp(f, B.bubble + 30, SPRINGS.soft) * 0.7);
   return (
-    <div style={{position: 'absolute', inset: 0, background: COLORS.tgBg, fontFamily: UI_STACK, color: '#fff'}}>
+    <div style={{position: 'absolute', inset: 0, background: COLORS.tgBg, fontFamily: UI_STACK, color: '#0F1222'}}>
       <div
         style={{
           position: 'absolute',
@@ -47,14 +47,14 @@ const TelegramChat: React.FC = () => {
         <IconChevronLeft size={28} color={COLORS.tgAccent} stroke={2.4} />
         <div style={{flex: 1}}>
           <div style={{fontWeight: 700, fontSize: 16.5}}>{C.chatName}</div>
-          <div style={{fontSize: 13, color: alpha('#FFFFFF', 0.5)}}>{C.chatSub}</div>
+          <div style={{fontSize: 13, color: alpha('#000000', 0.45)}}>{C.chatSub}</div>
         </div>
         <div style={{width: 40, height: 40, borderRadius: 40, overflow: 'hidden', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <LogoMark size={40} />
         </div>
       </div>
       <div style={{position: 'absolute', left: 12, right: 12, bottom: 96, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-start'}}>
-        <div style={{alignSelf: 'center', fontSize: 12.5, fontWeight: 600, color: alpha('#FFFFFF', 0.6), background: alpha('#000000', 0.25), padding: '4px 10px', borderRadius: 12}}>
+        <div style={{alignSelf: 'center', fontSize: 12.5, fontWeight: 600, color: '#fff', background: alpha('#4A6A85', 0.45), padding: '4px 10px', borderRadius: 12}}>
           Aujourd’hui
         </div>
         <div style={{background: COLORS.tgBubble, borderRadius: 16, padding: '9px 14px', fontSize: 14.5, lineHeight: '21px', whiteSpace: 'pre', opacity: 0.55}}>
@@ -78,7 +78,7 @@ const TelegramChat: React.FC = () => {
           boxSizing: 'border-box',
         }}
       >
-        <div style={{flex: 1, height: 38, borderRadius: 19, background: '#242F3D', color: alpha('#FFFFFF', 0.4), fontSize: 15.5, display: 'flex', alignItems: 'center', padding: '0 14px'}}>
+        <div style={{flex: 1, height: 38, borderRadius: 19, background: '#F1F3F5', color: alpha('#000000', 0.4), fontSize: 15.5, display: 'flex', alignItems: 'center', padding: '0 14px'}}>
           Message
         </div>
       </div>
@@ -101,14 +101,14 @@ export const S06Telegram: React.FC = () => {
         zIndex: 80,
       }}
     >
-      <NotificationCard app="tg" title={C.bannerTitle} body={C.bannerBody} bg="rgba(44,46,54,0.98)" />
+      <NotificationCard app="tg" title={C.bannerTitle} body={C.bannerBody} bg="rgba(255,255,255,0.98)" />
     </div>
   );
   return (
     <AbsoluteFill>
       <Background variant="calm" intensity={0.9} />
       <div style={{position: 'absolute', left: phoneX, top: L.phoneTop}}>
-        <PhoneFrame width={L.phoneW} time="20:14" overlay={overlay}>
+        <PhoneFrame width={L.phoneW} time="20:14" overlay={overlay} statusDark>
           <TelegramChat />
         </PhoneFrame>
       </div>

@@ -51,8 +51,8 @@ const LinkPreview: React.FC = () => (
       </div>
     </div>
     <div style={{padding: '10px 13px'}}>
-      <div style={{fontSize: 14.5, fontWeight: 600, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{C.linkTitle}</div>
-      <div style={{fontSize: 13, color: alpha('#FFFFFF', 0.55), marginTop: 3}}>{C.linkUrl}</div>
+      <div style={{fontSize: 14.5, fontWeight: 600, color: '#0F1222', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{C.linkTitle}</div>
+      <div style={{fontSize: 13, color: alpha('#000000', 0.5), marginTop: 3}}>{C.linkUrl}</div>
     </div>
   </div>
 );
@@ -232,10 +232,8 @@ const BookingSite: React.FC = () => {
 };
 
 export const S08RestoDM: React.FC = () => {
-  const f = useCurrentFrame();
   const L = useLayout();
   const phoneX = L.phoneCx - L.phoneW / 2;
-  const light = f >= (B.siteOpen[0] + B.siteOpen[1]) / 2;
   // Tap targets in screen (logical) coordinates.
   const tableX = PLAN_X + tableCenter('T19').x * K;
   const tableY = PLAN_TOP + tableCenter('T19').y * K;
@@ -244,7 +242,7 @@ export const S08RestoDM: React.FC = () => {
     <AbsoluteFill>
       <Background variant="calm" />
       <div style={{position: 'absolute', left: phoneX, top: L.phoneTop}}>
-        <PhoneFrame width={L.phoneW} time="18:31" statusDark={light}>
+        <PhoneFrame width={L.phoneW} time="18:31" statusDark>
           <DMThread
             theme={T}
             name={C.venueName}
@@ -254,7 +252,7 @@ export const S08RestoDM: React.FC = () => {
             composer={C.composer}
           >
             <BookingSite />
-            <Tap x={180} y={350} at={B.tapLink} color="#FFFFFF" />
+            <Tap x={180} y={350} at={B.tapLink} color={COLORS.blue} />
             <Tap x={tableX} y={tableY} at={B.tapTable} color={COLORS.venueAccent} />
             <Tap x={SCREEN_W / 2} y={SCREEN_H - 230 + 33 + 20 + 26 + 4 + 20 + 27} at={B.tapConfirm} color={COLORS.venueAccent} />
           </DMThread>

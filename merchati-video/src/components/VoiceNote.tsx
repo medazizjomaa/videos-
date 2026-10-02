@@ -54,17 +54,17 @@ export const VoiceNote: React.FC<{play: readonly [number, number]; transcriptAt:
           opacity: tp,
           transform: `translateY(${(1 - tp) * 6}px)`,
           borderRadius: 14,
-          border: `1px solid ${alpha(COLORS.cyan, 0.35)}`,
-          background: alpha(COLORS.blue, 0.14),
+          border: `1px solid ${alpha(COLORS.blue, 0.25)}`,
+          background: alpha(COLORS.blue, 0.07),
           padding: '7px 11px',
           boxSizing: 'border-box',
         }}
       >
-        <div style={{display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 700, color: COLORS.cyan, letterSpacing: '0.03em'}}>
-          <IconSparkle size={11} color={COLORS.cyan} />
+        <div style={{display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 700, color: COLORS.blue, letterSpacing: '0.03em'}}>
+          <IconSparkle size={11} color={COLORS.blue} />
           {COPY.shopDM.transcriptLabel}
         </div>
-        <div style={{fontSize: 13.5, color: '#fff', marginTop: 3, whiteSpace: 'nowrap'}}>
+        <div style={{fontSize: 13.5, color: '#0F1222', marginTop: 3, whiteSpace: 'nowrap'}}>
           {COPY.shopDM.transcript.slice(0, chars)}
         </div>
       </div>

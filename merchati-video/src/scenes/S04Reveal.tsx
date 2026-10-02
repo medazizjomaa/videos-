@@ -29,8 +29,8 @@ const AnsweredRow: React.FC<{row: (typeof C.rows)[number]; w: number; h: number;
       padding: `0 ${h * 0.2}px`,
       boxSizing: 'border-box',
       fontFamily: UI_STACK,
-      color: '#fff',
-      boxShadow: `0 20px 50px ${alpha('#000000', 0.35)}`,
+      color: COLORS.text,
+      boxShadow: `0 16px 40px ${alpha('#0B1B3F', 0.1)}`,
     }}
   >
     <div style={{position: 'relative'}}>
@@ -113,7 +113,7 @@ export const S04Reveal: React.FC = () => {
   const colY = L.square ? (L.H - rows.length * (rowH + 14)) / 2 : 790;
 
   return (
-    <AbsoluteFill style={{background: '#000'}}>
+    <AbsoluteFill style={{background: COLORS.bg}}>
       <AbsoluteFill style={{opacity: bg}}>
         <Background variant="brand" intensity={1.1} />
       </AbsoluteFill>
@@ -136,7 +136,7 @@ export const S04Reveal: React.FC = () => {
             width: 1400 * pulse,
             height: 1400 * pulse,
             borderRadius: 2000,
-            border: `2px solid ${alpha(COLORS.cyan, 0.6 * (1 - pulse))}`,
+            border: `3px solid ${alpha(COLORS.blue, 0.6 * (1 - pulse))}`,
             boxShadow: `0 0 80px ${alpha(COLORS.cyan, 0.35 * (1 - pulse))}, inset 0 0 80px ${alpha(COLORS.blue, 0.3 * (1 - pulse))}`,
           }}
         />
@@ -148,7 +148,7 @@ export const S04Reveal: React.FC = () => {
             width: 80,
             height: 80,
             borderRadius: 80,
-            background: `radial-gradient(circle, #FFFFFF 0%, ${COLORS.cyan} 30%, ${alpha(COLORS.blue, 0)} 70%)`,
+            background: `radial-gradient(circle, ${COLORS.cyan} 0%, ${COLORS.blue} 35%, ${alpha(COLORS.blue, 0)} 70%)`,
             transform: `scale(${core * 2.4})`,
             opacity: core,
           }}

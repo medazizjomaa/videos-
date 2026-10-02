@@ -42,7 +42,7 @@ const SWATCH = [
   {dress: COLORS.dressBordeaux, bg: COLORS.productBg3},
 ];
 
-export const ProductCard: React.FC<{i: number; dark?: boolean}> = ({i, dark = true}) => {
+export const ProductCard: React.FC<{i: number; dark?: boolean}> = ({i, dark = false}) => {
   const p = COPY.products[i];
   const s = SWATCH[i % SWATCH.length];
   return (
@@ -53,7 +53,7 @@ export const ProductCard: React.FC<{i: number; dark?: boolean}> = ({i, dark = tr
         borderRadius: 18,
         overflow: 'hidden',
         background: dark ? '#1C1C1E' : '#fff',
-        border: `1px solid ${alpha('#FFFFFF', dark ? 0.08 : 0)}`,
+        border: `1px solid ${dark ? alpha('#FFFFFF', 0.08) : '#E4E6EB'}`,
         flexShrink: 0,
         fontFamily: UI_STACK,
       }}
@@ -70,16 +70,16 @@ export const ProductCard: React.FC<{i: number; dark?: boolean}> = ({i, dark = tr
         <Dress color={s.dress} size={108} />
       </div>
       <div style={{padding: '9px 11px'}}>
-        <div style={{fontSize: 14, fontWeight: 600, color: '#fff'}}>{p.name}</div>
-        <div style={{fontSize: 12.5, color: alpha('#FFFFFF', 0.55), marginTop: 1}}>{p.color} · S M L</div>
+        <div style={{fontSize: 14, fontWeight: 600, color: '#0F1222'}}>{p.name}</div>
+        <div style={{fontSize: 12.5, color: alpha('#000000', 0.5), marginTop: 1}}>{p.color} · S M L</div>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 6}}>
-          <span style={{fontSize: 14.5, fontWeight: 700, color: '#fff'}}>{p.price}</span>
+          <span style={{fontSize: 14.5, fontWeight: 700, color: '#0F1222'}}>{p.price}</span>
           <span
             style={{
               fontSize: 11.5,
               fontWeight: 600,
-              color: '#fff',
-              background: alpha('#FFFFFF', 0.12),
+              color: '#0F1222',
+              background: '#EFEFEF',
               padding: '3px 9px',
               borderRadius: 10,
             }}

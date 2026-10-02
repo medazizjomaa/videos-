@@ -1,6 +1,6 @@
 import React from 'react';
-import {AbsoluteFill, Sequence} from 'remotion';
-import {COLORS, SCENES, TRANSITION} from './config';
+import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
+import {COLORS, SCENES, TRANSITION, VOICEOVER} from './config';
 import {ensureFonts} from './fonts';
 import {Enter, SceneWrap} from './components/SceneWrap';
 import {S01Overload} from './scenes/S01Overload';
@@ -35,6 +35,8 @@ const TIMELINE: [keyof typeof SCENES, React.FC, Enter][] = [
 
 export const MerchatiVideo: React.FC = () => (
   <AbsoluteFill style={{background: COLORS.bgDeep}}>
+    <Audio src={staticFile('audio/music.wav')} volume={VOICEOVER ? 0.42 : 0.8} />
+    {VOICEOVER ? <Audio src={staticFile('audio/voiceover.wav')} volume={1} /> : null}
     {TIMELINE.map(([key, Scene, enter]) => (
       <Sequence key={key} name={key} from={SCENES[key].from} durationInFrames={SCENES[key].dur + TRANSITION}>
         <SceneWrap enter={enter}>

@@ -19,14 +19,14 @@ export const TelegramAlert: React.FC<{
     style={{
       width,
       borderRadius: floating ? 24 : 18,
-      background: floating ? alpha('#17212B', 0.97) : COLORS.tgBubble,
+      background: COLORS.tgBubble,
       padding: floating ? '16px 18px 14px' : '10px 14px 8px',
       boxSizing: 'border-box',
       fontFamily: UI_STACK,
-      color: '#fff',
+      color: '#0F1222',
       boxShadow: [
-        floating ? `0 30px 80px ${alpha('#000000', 0.5)}` : '',
-        floating ? `inset 0 0 0 1px ${alpha('#FFFFFF', 0.08)}` : '',
+        floating ? `0 30px 80px ${alpha('#0B1B3F', 0.22)}` : '0 2px 6px rgba(0,0,0,0.08)',
+        floating ? `inset 0 0 0 1px ${alpha('#0B1B3F', 0.08)}` : '',
         glow > 0 ? `0 0 ${60 * glow}px ${alpha(COLORS.tgAccent, 0.45 * glow)}` : '',
       ]
         .filter(Boolean)
@@ -36,15 +36,15 @@ export const TelegramAlert: React.FC<{
     {floating ? (
       <div style={{display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10}}>
         <AppIcon app="tg" size={30} />
-        <span style={{fontSize: 14, fontWeight: 600, color: alpha('#FFFFFF', 0.7)}}>Telegram</span>
-        <span style={{fontSize: 14, color: alpha('#FFFFFF', 0.4), marginLeft: 'auto'}}>{COPY.now}</span>
+        <span style={{fontSize: 14, fontWeight: 600, color: alpha('#000000', 0.6)}}>Telegram</span>
+        <span style={{fontSize: 14, color: alpha('#000000', 0.4), marginLeft: 'auto'}}>{COPY.now}</span>
       </div>
     ) : null}
     <div style={{fontSize: 14, fontWeight: 700, color: COLORS.tgAccent}}>{COPY.telegram.chatName}</div>
     <div style={{fontSize: 16, fontWeight: 700, marginTop: 4, lineHeight: '22px'}}>{data.title}</div>
     <div style={{marginTop: 4}}>
       {data.lines.map((l) => (
-        <div key={l} style={{fontSize: 15, lineHeight: '23px', color: alpha('#FFFFFF', 0.92), whiteSpace: 'nowrap'}}>
+        <div key={l} style={{fontSize: 15, lineHeight: '23px', color: '#0F1222', whiteSpace: 'nowrap'}}>
           {l}
         </div>
       ))}
@@ -56,7 +56,7 @@ export const TelegramAlert: React.FC<{
         alignItems: 'center',
         gap: 4,
         fontSize: 12,
-        color: alpha('#FFFFFF', 0.45),
+        color: alpha('#000000', 0.45),
         marginTop: 2,
       }}
     >

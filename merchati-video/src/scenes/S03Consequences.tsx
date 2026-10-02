@@ -27,12 +27,12 @@ const Panel: React.FC<{box: Box; at: number; f: number; children: React.ReactNod
         borderRadius: 30,
         background: `linear-gradient(180deg, ${COLORS.bgPanel2} 0%, ${COLORS.bgPanel} 100%)`,
         border: `1px solid ${tone === 'red' ? alpha(COLORS.red, 0.35) : COLORS.lineStrong}`,
-        boxShadow: `0 30px 80px ${alpha('#000000', 0.45)}`,
+        boxShadow: `0 20px 50px ${alpha('#0B1B3F', 0.1)}`,
         overflow: 'hidden',
         opacity: p,
         transform: `translateY(${(1 - p) * 40}px) scale(${0.96 + 0.04 * p})`,
         fontFamily: UI_STACK,
-        color: '#fff',
+        color: COLORS.text,
       }}
     >
       {children}
@@ -59,7 +59,7 @@ const Clock: React.FC<{f: number; size: number}> = ({f, size}) => {
         fontWeight: 800,
         fontSize: size,
         letterSpacing: '-0.04em',
-        color: '#fff',
+        color: COLORS.text,
         fontVariantNumeric: 'tabular-nums',
         lineHeight: 1,
       }}
@@ -189,14 +189,14 @@ export const S03Consequences: React.FC = () => {
       <Panel box={boxes.table} at={B.tableAt} f={f}>
         <div style={{position: 'absolute', left: 0, top: 0, width: boxes.table.w / s, height: boxes.table.h / s, transform: `scale(${s})`, transformOrigin: 'top left', padding: 22, boxSizing: 'border-box'}}>
           <svg width={110} height={84} viewBox="0 0 110 84" style={{display: 'block'}}>
-            <circle cx="55" cy="42" r="22" fill="none" stroke={alpha('#FFFFFF', 0.35)} strokeWidth="2" strokeDasharray="5 5" />
+            <circle cx="55" cy="42" r="22" fill="none" stroke={alpha('#0B1B3F', 0.3)} strokeWidth="2" strokeDasharray="5 5" />
             {[
               [55, 8],
               [55, 76],
               [16, 42],
               [94, 42],
             ].map(([x, y], i) => (
-              <rect key={i} x={x - 7} y={y - 7} width="14" height="14" rx="4" fill="none" stroke={alpha('#FFFFFF', 0.28)} strokeWidth="2" />
+              <rect key={i} x={x - 7} y={y - 7} width="14" height="14" rx="4" fill="none" stroke={alpha('#0B1B3F', 0.25)} strokeWidth="2" />
             ))}
           </svg>
           <div style={{fontSize: 18, fontWeight: 700, marginTop: 10}}>{C.tableTitle}</div>
@@ -208,7 +208,7 @@ export const S03Consequences: React.FC = () => {
               fontSize: 13,
               fontWeight: 700,
               color: COLORS.textDim,
-              background: alpha('#FFFFFF', 0.08),
+              background: alpha('#0B1B3F', 0.06),
               padding: '5px 12px',
               borderRadius: 20,
             }}
@@ -245,7 +245,7 @@ export const S03Consequences: React.FC = () => {
         </div>
       </Panel>
 
-      <AbsoluteFill style={{background: '#000', opacity: black}} />
+      <AbsoluteFill style={{background: COLORS.bg, opacity: black}} />
     </AbsoluteFill>
   );
 };

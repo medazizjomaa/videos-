@@ -55,7 +55,7 @@ export const S05ShopDM: React.FC = () => {
     <AbsoluteFill>
       <Background variant="brand" />
       <div style={{position: 'absolute', left: phoneX, top: L.phoneTop + (1 - intro) * 60, opacity: intro}}>
-        <PhoneFrame width={L.phoneW} time="20:12">
+        <PhoneFrame width={L.phoneW} time="20:12" statusDark>
           <DMThread
             theme={T}
             name={C.shopName}

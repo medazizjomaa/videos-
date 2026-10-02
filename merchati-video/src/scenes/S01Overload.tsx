@@ -53,7 +53,7 @@ export const S01Overload: React.FC = () => {
             transform: `rotate(${buzz * 0.9}deg) translateX(${buzz * 3}px)`,
           }}
         >
-          <PhoneFrame width={phoneW} time={COPY.overload.lockTime} glow={0.6}>
+          <PhoneFrame width={phoneW} time={COPY.overload.lockTime} glow={0.6} statusDark>
             <LockScreen time={COPY.overload.lockTime} date={COPY.overload.lockDate} arrivals={arrivals} />
           </PhoneFrame>
           <div style={{position: 'absolute', right: -phoneW * 0.07, top: -phoneW * 0.05, opacity: badgeIn, transform: `scale(${badgeIn})`}}>

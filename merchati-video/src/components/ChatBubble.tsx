@@ -30,7 +30,7 @@ export const ChatBubble: React.FC<{
       style={{
         display: 'inline-block',
         background: bg,
-        color: '#fff',
+        color: me ? '#fff' : '#0F1222',
         fontFamily: UI_STACK,
         fontSize: BUBBLE_FONT,
         lineHeight: `${BUBBLE_LH}px`,

@@ -248,7 +248,7 @@ export const DashCamera: React.FC<{
           transformOrigin: `${x}px ${y}px`,
           borderRadius: 26,
           overflow: 'hidden',
-          boxShadow: `0 0 0 1px ${alpha('#FFFFFF', 0.25)}, 0 60px 140px ${alpha('#000000', 0.6)}, 0 0 160px ${alpha(COLORS.blue, 0.25)}`,
+          boxShadow: `0 0 0 1px ${alpha('#0B1B3F', 0.08)}, 0 50px 120px ${alpha('#0B1B3F', 0.22)}, 0 0 140px ${alpha(COLORS.blue, 0.14)}`,
         }}
       >
         {children}

@@ -48,14 +48,14 @@ export const S10Highlights: React.FC = () => {
                 gap: size * 0.45,
                 padding: `0 ${size * 0.85}px 0 ${size * 0.32}px`,
                 borderRadius: h,
-                background: `linear-gradient(180deg, ${alpha('#13203F', 0.95)} 0%, ${alpha('#0B1428', 0.95)} 100%)`,
+                background: '#FFFFFF',
                 border: `1px solid ${alpha(COLORS.blueSoft, 0.32)}`,
-                boxShadow: `0 24px 60px ${alpha('#000000', 0.45)}, 0 0 60px ${alpha(COLORS.blue, 0.22)}`,
+                boxShadow: `0 18px 44px ${alpha('#0B1B3F', 0.12)}, 0 0 50px ${alpha(COLORS.blue, 0.12)}`,
                 fontFamily: DISPLAY_STACK,
                 fontWeight: 700,
                 fontSize: size,
                 letterSpacing: '-0.025em',
-                color: '#fff',
+                color: COLORS.text,
                 whiteSpace: 'nowrap',
               }}
             >

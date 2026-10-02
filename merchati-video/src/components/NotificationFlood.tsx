@@ -49,10 +49,10 @@ export const LockScreen: React.FC<{
         style={{
           position: 'absolute',
           inset: 0,
-          background: `radial-gradient(80% 40% at 80% 100%, ${alpha(COLORS.blue, 0.25)} 0%, transparent 70%)`,
+          background: `radial-gradient(80% 40% at 80% 100%, ${alpha(COLORS.cyan, 0.25)} 0%, transparent 70%)`,
         }}
       />
-      <div style={{position: 'absolute', top: 92, width: '100%', textAlign: 'center', color: '#fff'}}>
+      <div style={{position: 'absolute', top: 92, width: '100%', textAlign: 'center', color: COLORS.navy}}>
         <div style={{fontSize: 19, fontWeight: 600, opacity: 0.85}}>{date}</div>
         <div
           style={{

@@ -68,7 +68,7 @@ export const S11CTA: React.FC = () => {
     <AbsoluteFill>
       <Background variant="calm" intensity={1.1} />
       <div style={{position: 'absolute', left: phoneX, top: phoneY}}>
-        <PhoneFrame width={phoneW} time={C.lockTime} glow={1.2}>
+        <PhoneFrame width={phoneW} time={C.lockTime} glow={1.2} statusDark>
           <LockScreen time={C.lockTime} date={C.lockDate} calm={<CalmCards />} />
         </PhoneFrame>
         <div style={{position: 'absolute', right: -phoneW * 0.06, top: -phoneW * 0.05}}>
@@ -154,7 +154,7 @@ export const S11CTA: React.FC = () => {
             fontWeight: 800,
             fontSize: L.square ? 52 : 64,
             letterSpacing: '-0.03em',
-            color: '#fff',
+            color: COLORS.text,
           }}
         >
           {C.url}

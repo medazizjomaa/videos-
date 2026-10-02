@@ -38,7 +38,7 @@ export const Logo: React.FC<Props> = ({width, animated, startFrom = 0, plate = t
         borderRadius: plate ? width * 0.07 : 0,
         background: plate ? '#FFFFFF' : 'transparent',
         boxShadow: plate
-          ? `0 0 0 1px ${alpha('#FFFFFF', 0.5)}, 0 30px 80px ${alpha(COLORS.blue, 0.35 * glow)}, 0 0 140px ${alpha(COLORS.cyan, 0.18 * glow)}`
+          ? `0 0 0 1px ${alpha('#0B1B3F', 0.06)}, 0 24px 60px ${alpha(COLORS.blue, 0.22 * glow)}, 0 0 120px ${alpha(COLORS.cyan, 0.16 * glow)}`
           : undefined,
         boxSizing: 'border-box',
         overflow: 'hidden',

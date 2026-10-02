@@ -66,7 +66,7 @@ export const NotificationCard: React.FC<{
       gap: 11,
       boxSizing: 'border-box',
       fontFamily: UI_STACK,
-      boxShadow: '0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.07)',
+      boxShadow: '0 10px 30px rgba(11,27,63,0.12), inset 0 0 0 1px rgba(11,27,63,0.06)',
       ...style,
     }}
   >
