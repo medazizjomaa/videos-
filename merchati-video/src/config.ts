@@ -304,4 +304,4 @@ export const BEATS = {
 } as const;
 
 // Set to true once public/audio/voiceover.wav exists (scripts/voiceover.py). Music is ducked under it.
-export const VOICEOVER = false;
+export const VOICEOVER = true;
