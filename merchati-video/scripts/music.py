@@ -1,9 +1,9 @@
-"""Original background score for the MERCHATI promo (60 s), synthesized from scratch.
+"""Original background score for the MERCHATI promo (65.5 s), synthesized from scratch.
 
 0–15 s   tension: drone, ticking hats, pulsing synth, rising noise (the overload)
 15–16 s  silence (the freeze)
 16 s     soft impact + bright pad (logo reveal), then an uplifting 100 BPM groove
-56–60 s  drums drop out, pad + plucks resolve and fade
+61.7–65.5 s  drums drop out, pad + plucks resolve and fade
 
 Usage: python3 scripts/music.py public/audio/music.wav
 """
@@ -13,7 +13,7 @@ from scipy.signal import butter, fftconvolve, sosfilt
 from scipy.io import wavfile
 
 SR = 44100
-DUR = 60.0
+DUR = 65.5
 N = int(SR * DUR)
 BPM = 100
 BEAT = 60 / BPM
@@ -179,7 +179,7 @@ while t < FREEZE - 0.1:
 add(riser(FREEZE - 9.5), 9.5, 0.55)
 
 # ---------------------------------------------------------------- part 2: reveal + groove (16 s →)
-END_GROOVE = 1685 / 30  # CTA starts: drums drop out
+END_GROOVE = 1850 / 30  # CTA starts: drums drop out
 CHORDS = [
     (41, (57, 60, 64, 67)),  # Fmaj9
     (40, (55, 60, 64, 67)),  # C/E

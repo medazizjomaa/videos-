@@ -45,6 +45,17 @@ export const COPY = {
       {app: 'ig', name: 'yosr_tn', reply: 'Commande #482641 fi thnia 🚚', time: '4 s'},
     ],
   },
+  catalog: {
+    pill: 'E-COMMERCE',
+    headline: ['Kol chay tbi3ou,', '*fi mokh wa7ed.*'],
+    window: 'un catalogue · kol les canaux',
+    hub: 'MERCHATI',
+    bullets: [
+      'Converty, Shopify, wala site mte3ek bel MERCHATI Pixel',
+      'Catalogue wa7ed : prix, couleurs, tailles w stock live',
+      'Ybi3 fel DM Insta w Messenger, w yab3ethlek 3la Telegram',
+    ],
+  },
   shopDM: {
     headline1: ['Sou2el?', '*Jweb fi thawani.*'],
     headline2: ['Ya5ou', '*el commande.*'],

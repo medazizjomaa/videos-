@@ -3,7 +3,7 @@
 export const FPS = 30;
 export const s = (sec: number) => Math.round(sec * FPS);
 
-export const TOTAL_FRAMES = s(60);
+export const TOTAL_FRAMES = s(65.5);
 
 // Frames a scene keeps running underneath the next one while it transitions in.
 export const TRANSITION = 14;
@@ -13,14 +13,15 @@ export const SCENES = {
   split: {from: 150, dur: 150},
   consequences: {from: 300, dur: 180},
   reveal: {from: 480, dur: 120},
-  shopDM: {from: 600, dur: 290},
-  telegram: {from: 890, dur: 90},
-  shopDash: {from: 980, dur: 180},
-  restoDM: {from: 1160, dur: 195},
-  restoDash: {from: 1355, dur: 150},
-  highlights: {from: 1505, dur: 60},
-  pricing: {from: 1565, dur: 120},
-  cta: {from: 1685, dur: 115},
+  catalog: {from: 600, dur: 165},
+  shopDM: {from: 765, dur: 290},
+  telegram: {from: 1055, dur: 90},
+  shopDash: {from: 1145, dur: 180},
+  restoDM: {from: 1325, dur: 195},
+  restoDash: {from: 1520, dur: 150},
+  highlights: {from: 1670, dur: 60},
+  pricing: {from: 1730, dur: 120},
+  cta: {from: 1850, dur: 115},
 } as const;
 
 export const COLORS = {
@@ -197,6 +198,20 @@ export const BEATS = {
     headline1Out: 84,
     headline2: 88,
     organize: 66,
+  },
+  catalog: {
+    pill: 4,
+    headline: 8,
+    card: 14,
+    hub: 26,
+    chips: 34,
+    chipStagger: 5,
+    // products flow from the stores into the hub, then out to the channels
+    flowIn: 62,
+    flowOut: 100,
+    flowDur: 26,
+    bullets: 74,
+    bulletStagger: 12,
   },
   shopDM: {
     headline1: 6,

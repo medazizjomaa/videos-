@@ -8,6 +8,8 @@ Usage:
   python3 scripts/voiceover_gemini.py public/audio/voiceover.wav            # new take
   python3 scripts/voiceover_gemini.py public/audio/voiceover.wav --take t.wav  # re-time a saved take
   --skip SEC ignores the start of a take (if the model read the director's notes aloud).
+  --line N=file.flac records line N on its own (one request) instead of taking it from the main take;
+    used to add a line without re-recording everything.
 Env: TTS_MODEL (default gemini-3.8-flash-tts, falls back to the lite model on quota errors), TTS_VOICE.
 """
 import base64
@@ -23,7 +25,7 @@ import numpy as np
 from scipy.io import wavfile
 
 SR = 44100
-DUR = 60.0
+DUR = 65.5
 MODELS = [os.environ.get('TTS_MODEL', 'gemini-3.8-flash-tts'), 'gemini-3.8-flash-lite-tts']
 PAUSE_BONUS = float(os.environ.get('PAUSE_BONUS', 8))
 VOICE = os.environ.get('TTS_VOICE', 'Sulafat')
@@ -45,14 +47,15 @@ LINES = [
     (5.3, 'Instagram, Messenger, le site… ما تلحقش تجاوب الكل.'),
     (10.4, 'وكل réponse تتأخر… هو client مشى لغيرك.'),
     (16.5, 'Voilà Merchati, l’employé intelligent متاعك.'),
-    (20.4, 'يجاوب بالدارجة, en quelques secondes, ليل ونهار.'),
-    (24.5, 'ياخو la commande, ويفهم حتى les vocaux.'),
-    (29.9, 'وإنت, توصلك notification على Telegram.'),
-    (33.2, 'Les commandes الكل, في dashboard واحد.'),
-    (38.9, 'Pour les restos, يبعث le lien de réservation, و le client يختار la table متاعو وحدو.'),
-    (45.4, 'وكل réservation توصلك en temps réel.'),
-    (51.2, 'E-commerce, à partir de cinquante dinars par mois. Et les restos, à partir de soixante.'),
-    (56.8, 'Merchati. جرّب sept jours, gratuit!'),
+    (20.1, 'Converty, Shopify, ولا le site متاعك… Merchati يجمع les produits الكل في catalogue واحد.'),
+    (26.1, 'يجاوب بالدارجة, en quelques secondes, ليل ونهار.'),
+    (30.0, 'ياخو la commande, ويفهم حتى les vocaux.'),
+    (35.4, 'وإنت, توصلك notification على Telegram.'),
+    (38.7, 'Les commandes الكل, في dashboard واحد.'),
+    (44.4, 'Pour les restos, يبعث le lien de réservation, و le client يختار la table متاعو وحدو.'),
+    (50.9, 'وكل réservation توصلك en temps réel.'),
+    (56.7, 'E-commerce, à partir de cinquante dinars par mois. Et les restos, à partir de soixante.'),
+    (62.3, 'Merchati. جرّب sept jours, gratuit!'),
 ]
 
 
@@ -75,8 +78,8 @@ def to_pcm(data, fmt_args):
     return np.frombuffer(pcm, np.int16).astype(np.float32) / 32768
 
 
-def tts():
-    text = STYLE + '\n' + '\n'.join(t for _, t in LINES)
+def tts(texts):
+    text = STYLE + '\n' + '\n'.join(texts)
     body = json.dumps({
         'contents': [{'parts': [{'text': text}]}],
         'generationConfig': {
@@ -121,7 +124,7 @@ def pauses(take, min_len=0.2):
     return out
 
 
-def split(take, skip=0.0):
+def split(take, lines, skip=0.0):
     """Cuts the take into one clip per line.
 
     The take is first cut at every pause (commas and '…' pause too), then neighbouring chunks are
@@ -129,10 +132,10 @@ def split(take, skip=0.0):
     """
     gaps = [(0.0, skip)] + [g for g in pauses(take) if g[0] > skip] + [(len(take) / SR, None)]
     chunks = [(a[1], b[0]) for a, b in zip(gaps, gaps[1:]) if b[0] - a[1] > 0.1]
-    weights = np.array([len(t) for _, t in LINES], float)
+    weights = np.array([len(t) for _, t in lines], float)
     weights /= weights.sum()
     total = chunks[-1][1] - chunks[0][0]
-    n, m = len(LINES), len(chunks)
+    n, m = len(lines), len(chunks)
     if m < n:
         sys.exit(f'only found {m} chunks in the take, expected at least {n}')
     # dp[i][j]: best cost putting the first j chunks into the first i lines
@@ -173,15 +176,33 @@ def fit(clip, room):
     return np.frombuffer(pcm, np.float32)
 
 
-def main(out, take_path=None, skip=0.0):
-    if take_path and os.path.exists(take_path):
-        take = to_pcm(open(take_path, 'rb').read(), [])
-    else:
-        take = tts()
-        take_path = take_path or out.replace('.wav', '-take.wav')
-        wavfile.write(take_path, SR, take)
-        print('saved raw take to', take_path)
-    clips = split(take, skip)
+def load_or_make(path, texts):
+    """Reads a saved take, or records one (one API request) and saves it as FLAC."""
+    if os.path.exists(path):
+        return to_pcm(open(path, 'rb').read(), [])
+    take = tts(texts)
+    wavfile.write(path + '.tmp.wav', SR, take)
+    subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', path + '.tmp.wav', path], check=True)
+    os.remove(path + '.tmp.wav')
+    print('saved take to', path)
+    return take
+
+
+def trim(clip, pad=0.04):
+    idx = np.where(np.abs(clip) > 0.02)[0]
+    return clip[max(0, idx[0] - int(pad * SR)) : idx[-1] + int(pad * SR)] if len(idx) else clip
+
+
+def main(out, take_path, skip=0.0, single=None):
+    """single: {line index: take path} for lines recorded on their own (added after the main take)."""
+    single = single or {}
+    rest = [l for i, l in enumerate(LINES) if i not in single]
+    split_clips = iter(split(load_or_make(take_path, [t for _, t in rest]), rest, skip))
+    clips = [trim(load_or_make(single[i], [t])) if i in single else next(split_clips) for i, (_, t) in enumerate(LINES)]
+    # match the loudness of separately recorded lines to the main take
+    rms = lambda c: float(np.sqrt(np.mean(c ** 2)))
+    ref = np.median([rms(c) for i, c in enumerate(clips) if i not in single])
+    clips = [c * (ref / rms(c)) if i in single else c for i, c in enumerate(clips)]
     track = np.zeros(int(SR * DUR), np.float32)
     for i, ((t0, _), clip) in enumerate(zip(LINES, clips)):
         nxt = LINES[i + 1][0] if i + 1 < len(LINES) else DUR
@@ -198,4 +219,5 @@ def main(out, take_path=None, skip=0.0):
 if __name__ == '__main__':
     args = sys.argv[1:]
     opt = lambda k: args[args.index(k) + 1] if k in args else None
-    main(args[0], opt('--take'), float(opt('--skip') or 0))
+    single = {int(v.split('=')[0]): v.split('=', 1)[1] for k, v in zip(args, args[1:]) if k == '--line'}
+    main(args[0], opt('--take') or args[0].replace('.wav', '-take.flac'), float(opt('--skip') or 0), single)

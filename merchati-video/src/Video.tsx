@@ -7,6 +7,7 @@ import {S01Overload} from './scenes/S01Overload';
 import {S02Split} from './scenes/S02Split';
 import {S03Consequences} from './scenes/S03Consequences';
 import {S04Reveal} from './scenes/S04Reveal';
+import {S04bCatalog} from './scenes/S04bCatalog';
 import {S05ShopDM} from './scenes/S05ShopDM';
 import {S06Telegram} from './scenes/S06Telegram';
 import {S07ShopDash} from './scenes/S07ShopDash';
@@ -23,6 +24,7 @@ const TIMELINE: [keyof typeof SCENES, React.FC, Enter][] = [
   ['split', S02Split, 'zoom'],
   ['consequences', S03Consequences, 'wipeUp'],
   ['reveal', S04Reveal, 'none'],
+  ['catalog', S04bCatalog, 'wipeLeft'],
   ['shopDM', S05ShopDM, 'iris'],
   ['telegram', S06Telegram, 'wipeLeft'],
   ['shopDash', S07ShopDash, 'wipeUp'],
