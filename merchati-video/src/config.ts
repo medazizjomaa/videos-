@@ -303,5 +303,5 @@ export const BEATS = {
   },
 } as const;
 
-// Set to true once public/audio/voiceover.wav exists (scripts/voiceover.py). Music is ducked under it.
+// Set to true once public/audio/voiceover.wav exists (scripts/voiceover_gemini.py). Music is ducked under it.
 export const VOICEOVER = true;
