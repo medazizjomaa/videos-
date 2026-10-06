@@ -16,6 +16,9 @@ STORY
 10. Pricing (58–62 s): two cards, E-commerce from 50 DT/month and Restaurant & Café from 60 DT/month (+150 DT one-time setup).
 11. Call to action (62–65 s): the next morning, the phone is calm, with summary notifications (conversations answered, orders confirmed, tables booked). The MERCHATI logo, "Kol message 3andou jweb. Bi3 wala réservation. Bel darija.", "7 iyem blech — bla carte bancaire", and merchati.tn.
 
+VOICE BACKGROUND (voice profile)
+A Tunisian woman in her mid-20s from Tunis. Her native language is Tunisian Darija, and she switches naturally to French like most young Tunisians. She has a clear, bright, friendly voice, a medium pitch, a smile in her tone, and an energetic but relaxed delivery. She sounds like a confident young entrepreneur talking to her followers on Instagram, not a professional announcer. She has a light, natural Tunisian accent in Darija and a clean French accent on the French words.
+
 VOICE-OVER
 A female voice: a young woman from Tunis, warm, confident and upbeat, like a natural Instagram ad (not a radio announcer). She speaks authentic TUNISIAN Darija (not Modern Standard Arabic, not Moroccan, not Egyptian) MIXED WITH FRENCH, exactly the way Tunisians talk. Every French word must be pronounced correctly with a French accent: "client" is "kli-yan", never "clien", and the same goes for commande, réservation, notification, dashboard and catalogue. "Merchati" is pronounced "mer-sha-ti". Each line must land on its scene. Lines:
 - Les commandes, les réservations, les messages… الكل في نفس الوقت!
@@ -42,3 +45,5 @@ IMAGES I WILL SEND YOU
 - Screenshots of the MERCHATI e-commerce dashboard and restaurant dashboard
 - Converty and Shopify logos
 - Product photos for the shop example
+
+Note: the screenshots I send (e-commerce and restaurant dashboards) are only a reference for the look and design. You don't need to use the values you see in them (names, numbers, prices, orders, revenue, dates); use the values in this prompt or realistic example values instead.
